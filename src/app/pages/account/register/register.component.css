@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+  flex-direction: row;
+  margin: initial;
+  padding: initial;
+}
+
+.info-color{
+  background-color: #4285f4 !important;
+}
