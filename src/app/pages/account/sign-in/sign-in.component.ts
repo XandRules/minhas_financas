@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Login } from './../../../core/auth/models/login';
 import { Validators } from '@angular/forms';
@@ -16,7 +17,9 @@ export class SignInComponent implements OnInit {
   public loginForm: FormGroup;
   public authLogin: Login;
 
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) {
+    this.isLogged();
+   }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -40,6 +43,20 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['reports']);
       }
     });
+  }
+
+  isLogged(){
+    return this.auth.isLoggedIn().subscribe(user => {
+      if(user){
+        let path: string = localStorage.getItem('page');
+        if(path){
+          this.router.navigate([path]);
+        }
+        return true;
+      }else{
+        return false;
+      }
+    })
   }
 
 }

@@ -1,3 +1,4 @@
+import { AppGuard } from './core/auth/auth.guard';
 import { NgModule } from '@angular/core';
 
 import { CoreModule } from "./core/core.module";
@@ -12,7 +13,11 @@ import { AppComponent } from './app.component';
     CoreModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    AppGuard,
+      //BAR_PROVIDERS
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

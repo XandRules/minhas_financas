@@ -1,4 +1,5 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Register } from './../../pages/account/register/models/Register';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Login } from './models/login';
 import { HttpClient } from '@angular/common/http';
@@ -21,6 +22,21 @@ export class AuthService {
           this.subjectLoggedIn.next(true);
           this.subjectUser.next(login);
           return response.user;
+        })
+      );
+    }
+  }
+
+  public create (register: Register) :Observable<Register>{
+
+    //Chamada ao backend
+
+    return of(register);
+
+    if(register){
+      return this.http.post<Register>('api/signup', register).pipe(
+        map((response) => {
+          return response;
         })
       );
     }

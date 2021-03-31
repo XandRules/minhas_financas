@@ -1,7 +1,7 @@
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './../../core/auth/auth-service.service';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgModule, Directive } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';

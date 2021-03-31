@@ -11,6 +11,6 @@ import { Platform } from '@angular/cdk/platform';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'finansys';
+  title = 'MINHAS FINANÇAS';
 
 }

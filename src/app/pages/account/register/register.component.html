@@ -1,0 +1,62 @@
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+  <div class="card  border-0">
+    <div class="row d-flex">
+      <div class="col-lg-6">
+        <div class="card1 pb-5">
+          <div class="row"> <img
+              src="../../../../assets/logo.png"
+              class="logo"> </div>
+          <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="https://i.imgur.com/uNGdWHi.png"
+              class="image"> </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card2 card border-0 px-4 py-5">
+          <div class="row mb-4 px-3">
+            <h6 class="mb-0 mr-4 mt-2">Criar nova conta</h6>
+          </div>
+          <form [formGroup]="registerForm" (keydown.enter)="signUp()">
+
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Nome</h6>
+              </label> <input class="mb-4" type="text" name="text" placeholder="Entre com seu primeiro nome"
+                formControlName="name">
+            </div>
+
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Sobrenome</h6>
+              </label> <input class="mb-4" type="text" name="text" placeholder="Entre com seu sobrenome"
+                formControlName="lastname">
+            </div>
+
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Email</h6>
+              </label> <input class="mb-4" type="text" name="email" placeholder="Entre com um e-mail válido"
+                formControlName="email">
+            </div>
+
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Senha</h6>
+              </label> <input class="mb-4" type="password" name="password" placeholder="Sua senha" formControlName="password">
+            </div>
+
+            <div class="row px-3"> <label class="mb-1">
+                <h6 class="mb-0 text-sm">Repetir Senha</h6>
+              </label> <input class="mb-4" type="password" name="password" placeholder="Repeta sua senha" formControlName="repeatPassword">
+            </div>
+            <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" (click)="signUp()">Cadastrar</button>
+            </div>
+            <div class="row mb-4 px-3">
+              <small class="font-weight-bold">Já tem uma conta?
+                <a class="text-danger " [routerLink]="['/account/sign-in']" routerLinkActive="router-link-active" >Entrar
+                </a>
+              </small>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

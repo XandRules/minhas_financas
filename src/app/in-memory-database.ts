@@ -1,3 +1,4 @@
+import { Register } from './pages/account/register/models/Register';
 import { InMemoryDbService } from "angular-in-memory-web-api";
 import { RequestInfo } from "angular-in-memory-web-api/interfaces";
 
@@ -35,8 +36,8 @@ export class InMemoryDatabase implements InMemoryDbService {
       { id: 55, name: 'Cinema', categoryId: categories[1].id, category: categories[1], paid: false, date: "28/04/2021", amount: "30,00", type: "expense" }  as Entry
     ];
 
-    const customers = [
-      { id: 1, name: 'Alexandre',lastname: 'Ribeiro',  password: '1234', email: 'alexandre@email.com' },
+    const customers: Register[] = [
+      { id: 1, name: 'Alexandre',lastname: 'Ribeiro',  password: '1234', email: 'alexandre@email.com' } as Register,
       // add as many data you need
     ];
 
