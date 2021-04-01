@@ -19,11 +19,21 @@
             <div class="row px-3"> <label class="mb-1">
                 <h6 class="mb-0 text-sm">Email</h6>
               </label> <input class="mb-4" type="text" name="email" placeholder="Entre com um e-mail válido"
-                formControlName="email">
+                formControlName="email" required>
+                <div
+                    *ngIf="loginForm.get('email').errors && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                  <p class="text-danger" *ngIf="loginForm.get('email').errors.required">Email é obrigatório</p>
+                  <p class="text-danger" *ngIf="loginForm.get('email').errors.email">o campo email precisa ter o caracter @</p>
+                </div>
             </div>
             <div class="row px-3"> <label class="mb-1">
                 <h6 class="mb-0 text-sm">Senha</h6>
               </label> <input type="password" name="password" placeholder="Sua senha" formControlName="password">
+              <div
+              *ngIf="loginForm.get('password').errors && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            <p class="text-danger" *ngIf="loginForm.get('password').errors.required">o Campo senha é obrigatório</p>
+            <p class="text-danger" *ngIf="loginForm.get('password').errors.minLength">A senha precisa ter no mínimo 4 caracters</p>
+          </div>
             </div>
             <div class="row px-3 mb-4">
               <div class="custom-control custom-checkbox custom-control-inline">
@@ -32,7 +42,7 @@
               </div>
               <a href="#" class="ml-auto mb-0 text-sm">Esqueceu a senha?</a>
             </div>
-            <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" (click)="login()">Entrar</button>
+            <div class="row mb-3 px-3"> <button type="submit" [disabled]="!loginForm.valid" class="btn btn-blue text-center" (click)="login()">Entrar</button>
             </div>
             <div class="row mb-4 px-3">
               <small class="font-weight-bold">Não tem uma conta?

@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from './../../../core/auth/auth-service.service';
 import { Component, OnInit } from '@angular/core';
+import toastr from "toastr";
 
 @Component({
   selector: 'app-sign-in',
@@ -23,7 +24,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
       password: [
           '',
           Validators.compose([
@@ -38,11 +39,17 @@ export class SignInComponent implements OnInit {
 
     this.authLogin = Object.assign('', this.authLogin, this.loginForm.value);
 
+    this.authLogin.email = this.authLogin.email.toLowerCase();
+    
     this.auth.signIn(this.authLogin).subscribe( user => {
       if(user?.id){
         this.router.navigate(['reports']);
       }
-    });
+    },
+    error => {
+      toastr.error( "Verifique os campos e tente novamente", "E-mail ou Senha incorreta");
+    }
+    );
   }
 
   isLogged(){
