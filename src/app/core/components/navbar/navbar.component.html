@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
   <div class="container">
     <a class="navbar-brand " routerLink="/">MINHAS FINANÇAS</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button  *ngIf="isLogged" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav" *ngIf="isLogged">
@@ -16,9 +16,9 @@
           <a class="nav-link" routerLink="/categories">Categorias</a>
         </li>
       </ul>
-    </div>
-    <div *ngIf="isLogged">
-      <button class="btn btn-warning" (click)="logout()">Sair</button>
+      <div *ngIf="isLogged">
+        <button class="btn btn-warning" (click)="logout()">Sair</button>
+      </div>
     </div>
 
   </div>
